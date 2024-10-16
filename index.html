@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<!--
+Name: Andrew Gibson
+Name of file: index.html
+Date Created: 09/01/2024
+Date Late Edited:
+Description: This is the HTML code for a patient registration form for Wraeclast Medical Group
+-->
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Title -->
+  <title>Wraeclast Medical Information Form</title>
+  <meta content="Medical registration form, Medical forms, Information Form" name="keywords"/>
+  <meta content="This document is for the patient to input their information for the Wraeclast Medical Group"
+        name="description"/>
+  <!-- Link to my css -->
+  <link href='css/style.css' rel='stylesheet' type='text/css'/>
+  <!-- Linking to my JavaScript -->
+  <script src="js/app.js"></script>
+</head>
+<body onload="document.medicalRegistration.firstName.focus();">
+<form name='medicalRegistration' action="hw1-thankyou.html" method="get" onsubmit="reviewInput()" id="signup">
+  <!-- Make a header, this header includes a table -->
+  <header>
+    <!-- Table for my logo and banner -->
+    <table class="my-table">
+      <tr>
+        <td>
+          <!-- Link to my company Logo -->
+          <img alt="logo" height="200px" id="logo" src="wraeclast.png" width="400px">
+        </td>
+      </tr>
+      <tr>
+        <td class="header-content">
+          <h1>Wraeclast Medical Group Patient Form</h1>
+          <p id="date"></p>
+        </td>
+      </tr>
+    </table>
+  </header>
+  <div class="leftSpace">
+    <!-- First name label and input-->
+    <div class="flex topSpace">
+      <div class="nameItems">
+        <label for="firstName">First Name:</label>
+        <input maxlength="30" id="firstName" size="16" type="text" pattern="[a-zA-Z']{1,30}" required/>
+      </div>
+
+      <!-- Middle name label and input -->
+      <div class="nameItems">
+        <label for="middleInitial">Middle Initial:</label>
+        <input maxlength="1" id="middleInitial" size="1" type="text" required/>
+      </div>
+
+      <!-- Last name label and input -->
+      <div class="nameItems">
+        <label for="lastName">Last Name:</label>
+        <input maxlength="30" id="lastName" size="16" type="text" pattern="[a-zA-Z']{1,30}" required/>
+      </div>
+    </div>
+
+    <!-- Email label and input -->
+    <div class="flex">
+      <label for="email">Email:</label>
+      <input name="email" id="email" type="email" size="15" placeholder="name@domain.tld" pattern="a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2-20}$" required/>
+    </div>
+
+    <!-- Phone number label and input -->
+    <div class="flex">
+      <label for="phoneNumber">Phone Number:</label>
+      <input id="phoneNumber" size="11" type="tel" maxlength="12" placeholder="000-000-0000" onblur="validatephone()" required/>
+    </div>
+
+    <!-- DOB label and input -->
+    <div class="flex">
+      <label for="dateOfBirth">Date of Birth:</label>
+      <input id="dateOfBirth" size="50" type="date" onblur="validateDob()" required/>
+      <span class="error" id="dob-error"></span>
+    </div>
+
+    <!-- SSN label and input, along with code to obscure the characters entered -->
+    <div class="flex">
+      <label for="ssn">Social Security Number:</label>
+      <input id="ssn" minlength="9" maxlength="11" name="ssn" placeholder="XXX-XX-XXXX" type="password" required/>
+    </div>
+
+    <!-- Address label and input -->
+    <div class="flex">
+      <label for="address">Address:</label>
+      <input maxlength="30" id="address" size="50" type="text" required/>
+    </div>
+
+    <!-- Address line 2 label and input -->
+    <div class="flex">
+      <label for="aptNumber">Apt, suite, ect. (optional):</label>
+      <input maxlength="30" id="aptNumber" size="50" type="text"/>
+    </div>
+
+    <!-- City label and input -->
+    <div class="flex">
+      <div class="locationItems">
+        <label for="city">City:</label>
+        <input id="city" maxlength="20" size="50" type="text" required/>
+      </div>
+
+      <!-- State label and drop down box -->
+      <div class="locationItems">
+        <label for="state">State:</label>
+        <select id="state" name="state" required>
+          <option value=""></option>
+          <option value="AL">Alabama</option>
+          <option value="AK">Alaska</option>
+          <option value="AZ">Arizona</option>
+          <option value="AR">Arkansas</option>
+          <option value="CA">California</option>
+          <option value="CO">Colorado</option>
+          <option value="CT">Connecticut</option>
+          <option value="DE">Delaware</option>
+          <option value="FL">Florida</option>
+          <option value="GA">Georgia</option>
+          <option value="HI">Hawaii</option>
+          <option value="ID">Idaho</option>
+          <option value="IL">Illinois</option>
+          <option value="IN">Indiana</option>
+          <option value="IA">Iowa</option>
+          <option value="KS">Kansas</option>
+          <option value="KY">Kentucky</option>
+          <option value="LA">Louisiana</option>
+          <option value="ME">Maine</option>
+          <option value="MD">Maryland</option>
+          <option value="MA">Massachusetts</option>
+          <option value="MI">Michigan</option>
+          <option value="MN">Minnesota</option>
+          <option value="MS">Mississippi</option>
+          <option value="MO">Missouri</option>
+          <option value="MT">Montana</option>
+          <option value="NE">Nebraska</option>
+          <option value="NV">Nevada</option>
+          <option value="NH">New Hampshire</option>
+          <option value="NJ">New Jersey</option>
+          <option value="NM">New Mexico</option>
+          <option value="NY">New York</option>
+          <option value="NC">North Carolina</option>
+          <option value="ND">North Dakota</option>
+          <option value="OH">Ohio</option>
+          <option value="OK">Oklahoma</option>
+          <option value="OR">Oregon</option>
+          <option value="PA">Pennsylvania</option>
+          <option value="RI">Rhode Island</option>
+          <option value="SC">South Carolina</option>
+          <option value="SD">South Dakota</option>
+          <option value="TN">Tennessee</option>
+          <option value="TX">Texas</option>
+          <option value="UT">Utah</option>
+          <option value="VT">Vermont</option>
+          <option value="VA">Virginia</option>
+          <option value="WA">Washington</option>
+          <option value="WV">West Virginia</option>
+          <option value="WI">Wisconsin</option>
+          <option value="WY">Wyoming</option>
+          <option value="DC">District of Columbia</option>
+          <option value="PR">Puerto Rico</option>
+        </select>
+      </div>
+
+      <!-- Zip code label and input -->
+      <div class="locationItems">
+        <label for="zip">ZIP Code:</label>
+        <input id="zip" type="text" maxlength="10" required/>
+      </div>
+    </div>
+
+    <!-- Radio buttons for the selection of the sex of the patient, allowing only one selection -->
+    <div class="columnFlex">
+      <label>Sex:</label>
+      <div class="sexTypes topSpaceSmall">
+        <span><label for="sex1"></label><input id="sex1" name="sex" type="radio" value="Male" required/>Male</span>
+        <span><label for="sex2"></label><input id="sex2" name="sex" type="radio" value="Female" required/>Female</span>
+        <span><label for="sex3"></label><input id="sex3" name="sex" type="radio" value="Other" required/>Other</span>
+      </div>
+    </div>
+
+    <!-- Radio buttons for the selection of vaccination status, allowing only one selection -->
+    <div class="columnFlex">
+      <label>Have you been vaccinated?:</label>
+      <div class="sexTypes topSpaceSmall">
+        <span><label for="vaccinated1"></label><input id="vaccinated1" name="vaccinated" type="radio" value="yes" required/>Yes</span>
+        <span><label for="vaccinated2"></label><input id="vaccinated2" name="vaccinated" type="radio" value="no" required/>No</span>
+      </div>
+    </div>
+
+    <!-- Radio buttons for the selection of insurance coverage, allowing only one selection -->
+    <div class="columnFlex">
+      <label>Do you have insurance?:</label>
+      <div class="sexTypes topSpaceSmall">
+        <span><label for="insurance1"></label><input id="insurance1" name="insurance" type="radio" value="yes" required/>Yes</span>
+        <span><label for="insurance2"></label><input id="insurance2" name="insurance" type="radio" value="no" required/>No</span>
+      </div>
+    </div>
+
+    <!-- Check boxes for previous illness -->
+    <div class="columnFlex">
+      <label>Check all of the following that apply:</label>
+      <div class="illnessTypes topSpaceSmall">
+        <label><input id="illness1" type="checkbox" value="chickenpox"> Chicken Pox</label>
+        <label><input id="illness2" type="checkbox" value="measles"> Measles</label>
+        <label><input id="illness3" type="checkbox" value="covid19"> Covid-19</label>
+        <label><input id="illness4" type="checkbox" value="smallpox"> Small Pox</label>
+        <label><input id="illness6" type="checkbox" value="tetanus"> Tetanus</label>
+      </div>
+    </div>
+
+
+    <!-- Text area for pre-existing condition, not sizeable for the user -->
+    <div class="columnFlex">
+      <label for="condition">Describe any pre-existing conditions you may have:</label>
+      <textarea class="topSpaceSmall resizeNone" cols="50" id="condition" rows="3"></textarea>
+    </div>
+
+
+    <!-- Slider allowing user to select level of pain -->
+    <div class="flex">
+      <label for="health">On a scale of 1 to 10, 10 being feeling good, how is your health?</label>
+      <input id="health" max="10" min="1" name="health" type="range" value="5">
+      <span id="healthValue"></span>
+    </div>
+
+    <!-- User ID label and input -->
+    <div class="flex">
+      <label for="userID">User ID:</label>
+      <input type="text" id="userID" name="userID" maxlength="20" onblur="validateUserID()" required/>
+      <span class="error" id="userID-error"></span>
+    </div>
+
+    <!-- Password label and input -->
+    <div class="flex">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" maxlength="30" onfocus="validatePassword()" onblur="validatePassword()" required/>
+      <span class="error" id="password-error"></span>
+    </div>
+
+    <!-- Confirm password label and input -->
+    <div class="flex">
+      <label for="confirmPassword">Re-enter Password:</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" onblur="confirmPassword()" required/>
+      <span class="error" id="confirmPassword-error"></span>
+    </div>
+
+
+    <!-- Button for the user to submit their form, review their inputs, or to clear and start over -->
+    <button id="review" name="review" type="button" value="review" onclick="reviewInput()">Review</button>
+    <button id="submitButton" name="submit" type="submit">Submit</button>
+    <input type="reset" value="Clear and Start Over">
+
+    <div class="passwordMessage">
+      <span id="message1"></span><br/>
+      <span id="message2"></span><br/>
+      <span id="message3"></span><br/>
+      <span id="message4"></span><br/>
+      <span id="message5"></span><br/>
+      <span id="message6"></span><br/>
+    </div>
+    <p id="showInput"></p>
+  </div>
+
+  <script src="js/thankYou.js"></script>
+
+</form>
+<!-- Footer with clickable "Contact us" button -->
+<footer>
+  <button onclick="location.href='contact.html'">Contact Us</button>
+</footer>
+</body>
+</html>

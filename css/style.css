@@ -1,0 +1,189 @@
+/*
+Name: Andrew Gibson
+Name of file: style.css
+Date Created: 09/01/2024
+Date Late Edited:
+Description: This is the CSS for a patient registration form for Wraeclast Medical Group
+*/
+
+input, select, textarea {
+  border-radius: 5px;
+  border: 1px solid black;
+  height: 1.5rem;
+}
+
+/* Text in the body */
+body {
+  color: #1a1a1a;
+  margin: 0 auto;
+  font-size: 20px;
+  font-family: Verdana, sans-serif;
+  background-color: bisque;
+}
+
+/* Adjusting margin to put space between labels and inputs */
+select, span {
+  margin-bottom: 10px;
+}
+
+/* Text area width and height */
+form {
+  margin: 0 auto;
+
+  textarea {
+    width: 250px;
+    height: 100px;
+  }
+}
+
+/* Submit button font size */
+[type="submit"] {
+  font-size:15px;
+}
+
+/* Styling for table */
+.my-table {
+  width: 100%;
+  background-color: sandybrown;
+  color: black;
+  padding: 50px 0;
+  border-collapse: collapse;
+  font-family: Verdana, sans-serif;
+  margin: 0 auto;
+}
+
+/* Padding for the table */
+.my-table td {
+  padding: 20px;
+}
+
+/* Styling for the header including the company name */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Styling for the dynamic date */
+#date {
+  margin-left: auto;
+  padding-left: 20px;
+}
+
+/* nameItems class to edit location of First name, Middle initial, and Last name */
+.nameItems {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+/* flex box to edit location of line items */
+.flex {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+/* Footer margin styling */
+footer {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: sandybrown;
+  text-align: center;
+}
+
+/* Footer button styling */
+footer button {
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+  border-radius: 50px;
+}
+
+/* Footer button hover styling */
+footer button:hover {
+  background-color: royalblue;
+}
+
+/* Margin for giving space between banner and first list */
+.topSpace {
+  margin-top: 15px;
+}
+
+/* Margin for giving space on top of lines */
+.topSpaceSmall {
+  margin-top: 5px;
+}
+
+/* Styling for column based listing */
+.sexTypes, .illnessTypes {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styling of box and margin space */
+.columnFlex {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+/* Gives space for left margin */
+.leftSpace {
+  margin-left: 20px;
+}
+
+/* Increases footer length */
+.bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%
+}
+
+/* Disables user from resizing text box */
+.resizeNone {
+  resize: none;
+}
+
+/* Error messages */
+.error {
+  color: red;
+  font-size: 10px;
+}
+
+/* Password message display */
+.passwordMessage {
+  position: relative;
+  top: -269px;
+  left: 269px;
+  z-index: 2;
+  background: white;
+  width: 170px;
+  font-size: 10px;
+  padding: 10px;
+  border: black 1px solid;
+  border-radius: 10px;
+  margin: 0;
+}
+
+/* Displays output on review */
+table.output, tr.output, td.output {
+  width: 500px;
+  background-color: bisque;
+  padding: 10px;
+  border-spacing: 2px;
+  border-radius: 30px;
+  color: black;
+}
+
+td.outputData {
+  width: 500px;
+  background-color: bisque;
+  padding: 10px;
+  border-spacing: 2px;
+  color: black;
+}
