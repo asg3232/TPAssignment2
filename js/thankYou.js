@@ -3,6 +3,7 @@ function thankYou() {
   location.href = "hw1-thankyou.html"
 }
 
+/* Redisplay user input */
 function reviewInput(stuff) {
   console.log(stuff);
   let formContent = document.getElementById("signup");

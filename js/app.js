@@ -155,9 +155,6 @@ function validateDob() {
     }
   }
 
-  /* Display user input */
-
-
 
 /* Removes the input the user provided */
 function removeReview() {
