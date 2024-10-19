@@ -21,7 +21,7 @@ Description: This is the HTML code for a patient registration form for Wraeclast
   <script src="js/app.js"></script>
 </head>
 <body onload="document.medicalRegistration.firstName.focus();">
-<form name='medicalRegistration' action="hw1-thankyou.html" method="get" onsubmit="reviewInput()" id="signup">
+<form name='medicalRegistration' action="hw1-thankyou.html" method="get" onsubmit="reviewInput()" onreset="removeReview()" id="signup">
   <!-- Make a header, this header includes a table -->
   <header>
     <!-- Table for my logo and banner -->
@@ -64,13 +64,17 @@ Description: This is the HTML code for a patient registration form for Wraeclast
     <!-- Email label and input -->
     <div class="flex">
       <label for="email">Email:</label>
-      <input name="email" id="email" type="email" size="15" placeholder="name@domain.tld" pattern="a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2-20}$" required/>
+      <input name="email" id="email" type="email" size="15" placeholder="name@domain.tld" pattern="a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2-20}$"
+             onblur="validateEmail()" required/>
+      <span class="error" id="email-error"></span>
     </div>
 
     <!-- Phone number label and input -->
     <div class="flex">
       <label for="phoneNumber">Phone Number:</label>
-      <input id="phoneNumber" size="11" type="tel" maxlength="12" placeholder="000-000-0000" onblur="validatephone()" required/>
+      <input id="phoneNumber" size="11" type="tel" maxlength="12" placeholder="000-000-0000" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+             onblur="validatePhone()" required/>
+      <span class="error" id="phoneNumber-error"></span>
     </div>
 
     <!-- DOB label and input -->
@@ -83,13 +87,15 @@ Description: This is the HTML code for a patient registration form for Wraeclast
     <!-- SSN label and input, along with code to obscure the characters entered -->
     <div class="flex">
       <label for="ssn">Social Security Number:</label>
-      <input id="ssn" minlength="9" maxlength="11" name="ssn" placeholder="XXX-XX-XXXX" type="password" required/>
+      <input id="ssn" minlength="9" maxlength="11" name="ssn" placeholder="XXX-XX-XXXX" type="password" onblur="validateSSN()" required/>
+      <span class="error" id="ssn-error"></span>
     </div>
 
     <!-- Address label and input -->
     <div class="flex">
       <label for="address">Address:</label>
-      <input maxlength="30" id="address" size="50" type="text" required/>
+      <input maxlength="40" id="address" size="50" type="text" placeholder="4750 Calhoun Rd" onblur="validateAddress()" required/>
+      <span class="error" id="address-error"></span>
     </div>
 
     <!-- Address line 2 label and input -->
@@ -168,7 +174,8 @@ Description: This is the HTML code for a patient registration form for Wraeclast
       <!-- Zip code label and input -->
       <div class="locationItems">
         <label for="zip">ZIP Code:</label>
-        <input id="zip" type="text" maxlength="10" required/>
+        <input id="zip" type="text" maxlength="5" pattern="[0-9]{5}" onblur="validateZip()" required/>
+        <span class="error" id="zip-error"></span>
       </div>
     </div>
 
@@ -230,14 +237,14 @@ Description: This is the HTML code for a patient registration form for Wraeclast
     <!-- User ID label and input -->
     <div class="flex">
       <label for="userID">User ID:</label>
-      <input type="text" id="userID" name="userID" maxlength="20" onblur="validateUserID()" required/>
+      <input type="text" id="userID" name="userID" maxlength="20" placeholder="User123" onblur="validateUserID()" required/>
       <span class="error" id="userID-error"></span>
     </div>
 
     <!-- Password label and input -->
     <div class="flex">
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password" maxlength="30" onfocus="validatePassword()" onblur="validatePassword()" required/>
+      <input type="password" id="password" name="password" minlength="8" maxlength="30" onfocus="validatePassword()" onblur="validatePassword()" required/>
       <span class="error" id="password-error"></span>
     </div>
 

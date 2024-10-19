@@ -36,6 +36,88 @@ function validateDob() {
   }
 }
 
+/* Validates SSN */
+function validateSSN() {
+  const ssn = document.getElementById("ssn").value;
+  const ssnR = /^[0-9]{3}-?[0-9]{2}-?[0-9]{4}$/;
+
+  if (!ssnR.test(ssn)) {
+    document.getElementById("ssn-error").innerHTML = "Please enter valid social security number";
+    return false;
+  } else {
+    document.getElementById("ssn-error").innerHTML = "";
+    return true;
+  }
+}
+
+/* Validates address */
+function validateAddress() {
+  let address1 = document.getElementById("address").value;
+  console.log(address1);
+  console.log(address1.length);
+
+  if (address1.length < 2) {
+    document.getElementById("address-error").innerHTML = "Please enter your address"
+    return false;
+  } else {
+    document.getElementById("address-error").innerHTML = "";
+    return true;
+  }
+}
+
+/* Validates zipcode */
+function validateZip() {
+  const zipInput =document.getElementById("zip");
+  let zip = zipInput.value.replace(/[^\d-]/g, "")
+
+  if (!zip) {
+    document.getElementById("zip-error").innerHTML = "Please enter your zip code"
+    return false;
+  }
+
+  /* Removes digits after 5 */
+  if (zip.length > 5) {
+    zip = zip.slice(0,5);
+  }
+
+  zipInput.value = zip
+  document.getElementById("zip-error").innerHTML = "";
+  return true;
+}
+
+/* Validates email */
+function validateEmail() {
+  let email = document.getElementById("email").value;
+  let emailR = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  if (email === "") {
+    document.getElementById("email-error").innerHTML = "Please enter your email address";
+    return false;
+    }
+      else if (!email.match(emailR)) {
+        document.getElementById("email-error").innerHTML = "Please enter a valid email address"
+        return false;
+  }
+      else {
+        document.getElementById("email-error").innerHTML = "";
+        return true;
+  }
+}
+
+function validatePhone() {
+  const phoneInput = document.getElementById("phoneNumber");
+  const phone = phoneInput.value.replace(/\D/g, "");
+
+  if (phone.length !== 10) {
+    document.getElementById("phoneNumber-error").innerHTML = "Please enter your phone number";
+    return false;
+  }
+
+  phoneInput.value = phone.slice(0, 3) + "-" + phone.slice(3, 6) + "-" + phone.slice(6);
+  document.getElementById("phoneNumber-error").innerHTML = "";
+  return true;
+}
+
   /* Validates User ID */
   function validateUserID() {
     let userID = document.getElementById("userID").value;
@@ -148,7 +230,7 @@ function validateDob() {
     let password2 = document.getElementById("password2").value;
 
     if (password2 !== password1) {
-      document.getElementById("password2-error").innerHTML = "Password does not match";
+      document.getElementById("password2-error").innerHTML = "Passwords does not match";
     }
     else {
       document.getElementById("password2-error").innerHTML = "";
