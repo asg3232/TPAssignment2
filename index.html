@@ -21,7 +21,7 @@ Description: This is the HTML code for a patient registration form for Wraeclast
   <script src="js/app.js"></script>
 </head>
 <body onload="document.medicalRegistration.firstName.focus();">
-<form name='medicalRegistration' action="hw1-thankyou.html" method="get" onsubmit="reviewInput()" onreset="removeReview()" id="signup">
+<form name='medicalRegistration' onsubmit="reviewInput()" onreset="removeReview()" id="signup">
   <!-- Make a header, this header includes a table -->
   <header>
     <!-- Table for my logo and banner -->
@@ -45,19 +45,19 @@ Description: This is the HTML code for a patient registration form for Wraeclast
     <div class="flex topSpace">
       <div class="nameItems">
         <label for="firstName">First Name:</label>
-        <input maxlength="30" id="firstName" size="16" type="text" pattern="[a-zA-Z']{1,30}" required/>
+        <input maxlength="30" id="firstName" size="16" type="text" name="first name" pattern="[a-zA-Z']{1,30}" required/>
       </div>
 
       <!-- Middle name label and input -->
       <div class="nameItems">
         <label for="middleInitial">Middle Initial:</label>
-        <input maxlength="1" id="middleInitial" size="1" type="text" required/>
+        <input maxlength="1" id="middleInitial" size="1" name="middle initial" type="text" required/>
       </div>
 
       <!-- Last name label and input -->
       <div class="nameItems">
         <label for="lastName">Last Name:</label>
-        <input maxlength="30" id="lastName" size="16" type="text" pattern="[a-zA-Z']{1,30}" required/>
+        <input maxlength="30" id="lastName" size="16" type="text" name="last name" pattern="[a-zA-Z']{1,30}" required/>
       </div>
     </div>
 
@@ -72,7 +72,7 @@ Description: This is the HTML code for a patient registration form for Wraeclast
     <!-- Phone number label and input -->
     <div class="flex">
       <label for="phoneNumber">Phone Number:</label>
-      <input id="phoneNumber" size="11" type="tel" maxlength="12" placeholder="000-000-0000" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+      <input id="phoneNumber" size="11" type="tel" maxlength="12" name="phone number" placeholder="000-000-0000" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
              onblur="validatePhone()" required/>
       <span class="error" id="phoneNumber-error"></span>
     </div>
@@ -80,7 +80,7 @@ Description: This is the HTML code for a patient registration form for Wraeclast
     <!-- DOB label and input -->
     <div class="flex">
       <label for="dateOfBirth">Date of Birth:</label>
-      <input id="dateOfBirth" size="50" type="date" onblur="validateDob()" required/>
+      <input id="dateOfBirth" size="50" type="date" name="date of birth" onblur="validateDob()" required/>
       <span class="error" id="dob-error"></span>
     </div>
 
@@ -94,7 +94,7 @@ Description: This is the HTML code for a patient registration form for Wraeclast
     <!-- Address label and input -->
     <div class="flex">
       <label for="address">Address:</label>
-      <input maxlength="40" id="address" size="50" type="text" placeholder="4750 Calhoun Rd" onblur="validateAddress()" required/>
+      <input maxlength="40" id="address" size="50" type="text" name="address" placeholder="4750 Calhoun Rd" onblur="validateAddress()" required/>
       <span class="error" id="address-error"></span>
     </div>
 
@@ -108,7 +108,7 @@ Description: This is the HTML code for a patient registration form for Wraeclast
     <div class="flex">
       <div class="locationItems">
         <label for="city">City:</label>
-        <input id="city" maxlength="20" size="50" type="text" required/>
+        <input id="city" maxlength="20" size="50" name="city" type="text" required/>
       </div>
 
       <!-- State label and drop down box -->
@@ -174,7 +174,7 @@ Description: This is the HTML code for a patient registration form for Wraeclast
       <!-- Zip code label and input -->
       <div class="locationItems">
         <label for="zip">ZIP Code:</label>
-        <input id="zip" type="text" maxlength="5" pattern="[0-9]{5}" onblur="validateZip()" required/>
+        <input id="zip" type="text" maxlength="5" pattern="[0-9]{5}" name="zip" onblur="validateZip()" required/>
         <span class="error" id="zip-error"></span>
       </div>
     </div>
@@ -211,11 +211,11 @@ Description: This is the HTML code for a patient registration form for Wraeclast
     <div class="columnFlex">
       <label>Check all of the following that apply:</label>
       <div class="illnessTypes topSpaceSmall">
-        <label><input id="illness1" type="checkbox" value="chickenpox"> Chicken Pox</label>
-        <label><input id="illness2" type="checkbox" value="measles"> Measles</label>
-        <label><input id="illness3" type="checkbox" value="covid19"> Covid-19</label>
-        <label><input id="illness4" type="checkbox" value="smallpox"> Small Pox</label>
-        <label><input id="illness6" type="checkbox" value="tetanus"> Tetanus</label>
+        <label><input id="illness1" type="checkbox" name="chickenpox" value="chickenpox"> Chicken Pox</label>
+        <label><input id="illness2" type="checkbox" name="measles" value="measles"> Measles</label>
+        <label><input id="illness3" type="checkbox" name="covid19" value="covid19"> Covid-19</label>
+        <label><input id="illness4" type="checkbox" name="smallpox" value="smallpox"> Small Pox</label>
+        <label><input id="illness6" type="checkbox" name="tetanus" value="tetanus"> Tetanus</label>
       </div>
     </div>
 
@@ -223,7 +223,7 @@ Description: This is the HTML code for a patient registration form for Wraeclast
     <!-- Text area for pre-existing condition, not sizeable for the user -->
     <div class="columnFlex">
       <label for="condition">Describe any pre-existing conditions you may have:</label>
-      <textarea class="topSpaceSmall resizeNone" cols="50" id="condition" rows="3"></textarea>
+      <textarea class="topSpaceSmall resizeNone" cols="50" name="pre-existing conditions" id="condition" rows="3"></textarea>
     </div>
 
 
@@ -272,7 +272,7 @@ Description: This is the HTML code for a patient registration form for Wraeclast
     <p id="showInput"></p>
   </div>
 
-  <script src="js/thankYou.js"></script>
+  <script src="js/reviewInput.js"></script>
 
 </form>
 <!-- Footer with clickable "Contact us" button -->

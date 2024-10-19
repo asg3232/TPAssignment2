@@ -1,8 +1,3 @@
-function thankYou() {
-  console.log('hello');
-  location.href = "hw1-thankyou.html"
-}
-
 /* Redisplay user input */
 function reviewInput(stuff) {
   console.log(stuff);
@@ -21,27 +16,14 @@ function reviewInput(stuff) {
       switch (dataType) {
         case "checkbox":
           if (formContent.elements[i].checked) {
-            formOutput =
-              formOutput +
-              "<tr><td align='right'>" +
-              formContent.elements[i].name +
-              "</td>";
-            formOutput =
-              formOutput + "<td class='outputdata'>&#x2713;</td></tr>";
+            formOutput += "<tr><td align='right'>" + formContent.elements[i].name + "</td>";
+            formOutput += "<td class='outputdata'>&#x2713;</td></tr>";
           }
           break;
         case "radio":
           if (formContent.elements[i].checked) {
-            formOutput =
-              formOutput +
-              "<tr><td align='right'>" +
-              formContent.elements[i].name +
-              "</td>";
-            formOutput =
-              formOutput +
-              "<td class='outputdata'>" +
-              value +
-              "</td></tr>";
+            formOutput += "<tr><td align='right'>" + formContent.elements[i].name + "</td>";
+            formOutput += "<td class='outputdata'>" + value + "</td></tr>";
           }
           break;
         case "button":
@@ -49,16 +31,8 @@ function reviewInput(stuff) {
         case "reset":
           break;
         default:
-          formOutput =
-            formOutput +
-            "<tr><td align='right'>" +
-            formContent.elements[i].name +
-            "</td>";
-          formOutput =
-            formOutput +
-            "<td class = 'outputdata'>" +
-            value +
-            "</td></tr>"
+          formOutput += "<tr><td align='right'>" + formContent.elements[i].name + "</td>";
+          formOutput += "<td class = 'outputdata'>" + value + "</td></tr>"
       }
     }
   }
