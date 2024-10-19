@@ -53,8 +53,6 @@ function validateSSN() {
 /* Validates address */
 function validateAddress() {
   let address1 = document.getElementById("address").value;
-  console.log(address1);
-  console.log(address1.length);
 
   if (address1.length < 2) {
     document.getElementById("address-error").innerHTML = "Please enter your address"
@@ -225,15 +223,15 @@ function validatePhone() {
   }
 
   /* Confirm password input */
-  function confirmPassword() {
-    let password1 = document.getElementById("password1").value;
-    let password2 = document.getElementById("password2").value;
+  function comparePassword() {
+    let password1 = document.getElementById("password").value;
+    let password2 = document.getElementById("confirmPassword").value;
 
     if (password2 !== password1) {
-      document.getElementById("password2-error").innerHTML = "Passwords does not match";
+      document.getElementById("confirmPassword-error").innerHTML = "Passwords does not match";
     }
     else {
-      document.getElementById("password2-error").innerHTML = "";
+      document.getElementById("confirmPassword-error").innerHTML = "Passwords match";
     }
   }
 

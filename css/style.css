@@ -158,7 +158,7 @@ footer button:hover {
 /* Password message display */
 .passwordMessage {
   position: relative;
-  top: -150px;
+  top: -165px;
   left: 450px;
   z-index: 2;
   background: white;

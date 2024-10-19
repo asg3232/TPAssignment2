@@ -1,8 +1,6 @@
 /* Redisplay user input */
-function reviewInput(stuff) {
-  console.log(stuff);
+function reviewInput() {
   let formContent = document.getElementById("signup");
-  console.log(document.getElementById("signup"));
   let formOutput;
   let dataType;
   let i;
@@ -11,7 +9,6 @@ function reviewInput(stuff) {
   for (i = 0; i < formContent.length; i++) {
     if (formContent.elements[i].value !== "") {
       dataType = formContent.elements[i].type;
-      console.log(dataType,formContent.elements)
       const value = formContent.elements[i].value || "";
       switch (dataType) {
         case "checkbox":
