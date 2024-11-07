@@ -3,7 +3,7 @@
 Name: Andrew Gibson
 Name of file: index.html
 Date Created: 09/01/2024
-Date Late Edited:
+Date Late Edited: 11/06/2024
 Description: This is the HTML code for a patient registration form for Wraeclast Medical Group
 -->
 
@@ -45,19 +45,22 @@ Description: This is the HTML code for a patient registration form for Wraeclast
     <div class="flex topSpace">
       <div class="nameItems">
         <label for="firstName">First Name:</label>
-        <input maxlength="30" id="firstName" size="16" type="text" name="first name" pattern="[a-zA-Z']{1,30}" required/>
+        <input maxlength="30" id="firstName" size="16" type="text" name="first name" oninput="validateFirstName()" required/>
+        <span class="error" id="firstName-error"></span>
       </div>
 
       <!-- Middle name label and input -->
       <div class="nameItems">
         <label for="middleInitial">Middle Initial:</label>
-        <input maxlength="1" id="middleInitial" size="1" name="middle initial" type="text" required/>
+        <input maxlength="1" id="middleInitial" size="1" name="middle initial" type="text" oninput="validateMiddleInitial()" required/>
+        <span class="error" id="middleInitial-error"></span>
       </div>
 
       <!-- Last name label and input -->
       <div class="nameItems">
         <label for="lastName">Last Name:</label>
-        <input maxlength="30" id="lastName" size="16" type="text" name="last name" pattern="[a-zA-Z']{1,30}" required/>
+        <input maxlength="30" id="lastName" size="16" type="text" name="last name" oninput="validateLastName()" required/>
+        <span class="error" id="lastName-error"></span>
       </div>
     </div>
 
@@ -108,7 +111,8 @@ Description: This is the HTML code for a patient registration form for Wraeclast
     <div class="flex">
       <div class="locationItems">
         <label for="city">City:</label>
-        <input id="city" maxlength="20" size="50" name="city" type="text" required/>
+        <input id="city" maxlength="20" size="50" name="city" type="text" oninput="validateCity()" required/>
+        <span class="error" id="city-error"></span>
       </div>
 
       <!-- State label and drop down box -->
@@ -260,6 +264,7 @@ Description: This is the HTML code for a patient registration form for Wraeclast
     <button id="review" name="review" type="button" value="review" onclick="reviewInput()">Review</button>
     <button id="submitButton" name="submit" type="submit">Submit</button>
     <input type="reset" value="Clear and Start Over">
+    <input type="button" name="Validate" id="Validate" value="Validate" onclick="validateAll()"/>
 
     <div class="passwordMessage">
       <span id="message1"></span><br/>
@@ -273,6 +278,14 @@ Description: This is the HTML code for a patient registration form for Wraeclast
   </div>
 
   <script src="js/reviewInput.js"></script>
+
+  <!-- Alert box for form -->
+  <div id="alert-box">
+    <div id="alert-content">
+      <h3>Please fill out the required information</h3>
+      <button id="close-alert">OK</button>
+    </div>
+  </div>
 
 </form>
 <!-- Footer with clickable "Contact us" button -->

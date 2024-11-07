@@ -14,6 +14,75 @@ const formattedDate = today.toLocaleDateString('en-US', options);
 /* Displaying the date */
 document.getElementById('date').textContent = formattedDate;
 
+
+/* First Name Validation */
+function validateFirstName() {
+  let fname = document.getElementById("firstName").value.trim();
+  const namePattern = /^[A-Za-z'-]+$/;
+
+  if (fname === "") {
+    document.getElementById("firstName-error").innerHTML = "First name field cannot be empty";
+    return false;
+  }  else if (fname !== "") {
+    if (!fname.match(namePattern)) {
+      document.getElementById("firstName-error").innerHTML = "First name can only have letters, apostrophes, and dashes only";
+      return false;
+    } else if (fname.length < 2) {
+      document.getElementById("firstName-error").innerHTML = "First name must have at least 2 characters";
+      return false;
+    } else if (fname.length > 30) {
+      document.getElementById("firstName-error").innerHTML = "First name cannot be more than 30 characters";
+      return false;
+    } else {
+      document.getElementById("firstName-error").innerHTML = "";
+      return true;
+    }
+  }
+}
+
+/* Middle Name Validation */
+function validateMiddleInitial() {
+  let middleInitial = document.getElementById("middleInitial").value;
+  const namePattern = /^[A-Z]+$/;
+
+  middleInitial = middleInitial.toUpperCase();
+  document.getElementById("middleInitial-error").value = middleInitial
+
+  if (!middleInitial.match(namePattern)) {
+    document.getElementById("middleInitial-error").innerHTML = "Middle initial must be a single upper case letter";
+    return false;
+  } else {
+      document.getElementById("middleInitial-error").innerHTML = "";
+      return true;
+    }
+  }
+
+/* Last Name Validation */
+function validateLastName() {
+  let lname = document.getElementById("lastName").value.trim();
+  const namePattern = /^[A-Za-z'-]+$/;
+
+  if (lname === "") {
+    document.getElementById("lastName-error").innerHTML = "Last name field cannot be empty";
+    return false;
+  }  else if (lname !== "") {
+    if (!lname.match(namePattern)) {
+      document.getElementById("lastName-error").innerHTML = "Last name can only have letters, apostrophes, and dashes only";
+      return false;
+    } else if (lname.length < 2) {
+      document.getElementById("lastName-error").innerHTML = "Last name must have at least 2 characters";
+      return false;
+    } else if (lname.length > 30) {
+      document.getElementById("lastName-error").innerHTML = "Last name cannot be more than 30 characters";
+      return false;
+    } else {
+      document.getElementById("lastName-error").innerHTML = "";
+      return true;
+    }
+  }
+}
+
+
 /* Validates DOB */
 function validateDob() {
   let dateOfBirth = document.getElementById("dateOfBirth");
@@ -62,6 +131,20 @@ function validateAddress() {
     return true;
   }
 }
+
+/* Validates city */
+function validateCity() {
+  let city1 = document.getElementById("city").value;
+
+  if (city1.length < 2) {
+    document.getElementById("city-error").innerHTML = "Please enter your city"
+    return false;
+  } else {
+    document.getElementById("city-error").innerHTML = "";
+    return true;
+  }
+}
+
 
 /* Validates zipcode */
 function validateZip() {
@@ -241,6 +324,65 @@ function removeReview() {
   document.getElementById("showInput").innerHTML = "";
 }
 
+/* Shows alert box for user */
+function showAlert() {
+  var alertBox = document.getElementById("alert-box");
+  var closeAlert = document.getElementById("close-alert");
+  alertBox.style.display = "block";
+  closeAlert.onclick = function () {
+    alertBox.style.display = "none";
+  }
+}
+
+
+/* Validates the information on the form */
+function validateAll() {
+  let valid = true;
+
+  if (!validateFirstName()) {
+    valid = false;
+  }
+  if (!validateLastName()) {
+    valid = false;
+  }
+  if (!validateEmail()) {
+    valid = false;
+  }
+  if (!validateDob()) {
+    valid = false;
+  }
+  if (!validateSSN()) {
+    valid = false;
+  }
+  if (!validatePhone()) {
+    valid = false;
+  }
+  if (!validateAddress()) {
+    valid = false;
+  }
+  if (!validateCity()) {
+    valid = false;
+  }
+  if (!validateZip()) {
+    valid = false;
+  }
+  if (!validateUserID()) {
+    valid = false;
+  }
+  if (!validatePassword()) {
+    valid = false;
+  }
+  if (!comparePassword()) {
+    valid = false;
+  }
+
+
+  if (valid) {
+    document.getElementById("submitButton").disabled = false;
+  } else {
+    showAlert();
+  }
+}
 
 
 
