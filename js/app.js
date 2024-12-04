@@ -302,7 +302,9 @@ function validatePhone() {
 
     if (flagError === 0) {
       document.getElementById("message3").innerHTML = "Valid password";
+      return true;
     }
+      return false;
   }
 
   /* Confirm password input */
@@ -312,9 +314,11 @@ function validatePhone() {
 
     if (password2 !== password1) {
       document.getElementById("confirmPassword-error").innerHTML = "Passwords does not match";
+      return false;
     }
     else {
       document.getElementById("confirmPassword-error").innerHTML = "Passwords match";
+      return true;
     }
   }
 
@@ -384,8 +388,76 @@ function validateAll() {
   }
 }
 
+/* Cookie for remembering user input */
+function setCookie(name, cvalue, expiryDays) {
+  var day = new Date();
+  day.setTime(day.getTime() + (expiryDays*24*60*60*1000));
 
+  var expires = "expires=" + day.toUTCString();
 
+  document.cookie = name + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(name) {
+  var cookieName = name + "=";
+  var cookies = document.cookie.split(';');
+
+  for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].trim();
+
+      while (cookie.charAt (0) == ' ') {
+          cookie = cookie.substring(1);
+      }
+      if (cookie.indexOf(cookieName) == 0) {
+        return cookie.substring(cookieName.length, cookie.length);
+      }
+  }
+  return " ";
+}
+
+var inputs = [
+  {id: "firstName", cookieName: "firstName"},
+  {id: "middleInitial", cookieName: "middleInitial"},
+  {id: "lastName", cookieName: "lastName"},
+  {id: "email", cookieName: "email"},
+  {id: "phoneNumber", cookieName: "phoneNumber"},
+  {id: "dateOfBirth", cookieName: "dateOfBirth"},
+  {id: "ssn", cookieName: "ssn"},
+  {id: "address", cookieName: "address"},
+  {id: "city", cookieName: "city"},
+  {id: "zip", cookieName: "zip"},
+  {id: "userID", cookieName: "userID"},
+]
+
+inputs.forEach(function (input) {
+  var inputElement = document.getElementById(input.id);
+
+  var cookieValue = getCookie(input.cookieName);
+  if (cookieValue !== "") {
+    inputElement.value = cookieValue;
+  }
+
+  inputElement.addEventListener("input", function() {
+    setCookie(input.cookieName, inputElement.value, 30);
+  });
+
+});
+
+/* Greets user with their name + welcome message if the cookie is set */
+var firstName = getCookie("firstName");
+
+  if (firstName !== "") {
+    document.getElementById("welcome1").innerHTML = "Welcome back, " + firstName + "!" </br>;
+    document.getElementById("welcome2").innerHTML =
+      "<a href='#' id='newUser'>Not " + firstName + "? Click here to start a new form. </a>";
+
+    document.getElementById("newUser").addEventListener("click", function () {
+      inputs.forEach(function (input) {
+        setCookie(input.cookieName, "", -1);
+      });
+      location.reload();
+    });
+  }
 
 
 

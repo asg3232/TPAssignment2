@@ -58,10 +58,19 @@ form {
 }
 
 /* Styling for the header including the company name */
-.header-content {
+.header-content  {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: background-color ease-in-out;
+  z-index: 1000%;
+}
+
+.header-content.scrolled {
+  background-color: sandybrown;
+  opacity: 1.0;
 }
 
 /* Styling for the dynamic date */
@@ -230,4 +239,21 @@ td.outputData {
   cursor: pointer;
   transition: background-color 0.15s, border-top-width 0.15s;
   margin-top: 20px;
+}
+
+/* iframe styling */
+.iframe-container {
+  position: absolute;
+  top: 30%;
+  right: 15%;
+  width: 15%;
+  height: 90%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.iframe-container iframe {
+  width: 95%;
+  height: 50%;
+  border: 1px solid black;
 }
